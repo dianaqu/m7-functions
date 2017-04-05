@@ -23,6 +23,7 @@ DescribeDifference <- function(a,b) {
   } else if (result < 0) {
     return (paste('Your second vector is longer by', abs(result), 'elements'))
   }
+  return (result)
 }
 
 # Pass two vectors to your `DescribeDifference` function
@@ -31,3 +32,19 @@ DescribeDifference <- function(a,b) {
 ### Bonus ###
 
 # Rewrite your `DescribeDifference` function to tell you the name of the vector which is longer
+
+
+DescribeDifference <- function(a,b) {
+  diff <- length(a) - length(b)
+  if(diff > 0) {
+    vector.name <- deparse(substitute(a))
+    sentence <- paste('Vector', vector.name, 'is longer by', diff, 'elements')
+  } else {
+    vector.name <- deparse(substitute(b)) # deparse turn it into vector.
+    sentence <- paste('Vector', vector.name, 'is longer by', -diff, 'elements')
+  }
+  return(sentence)
+}
+x <- 1:15
+y <- 9:170
+DescribeDifference(x, y)
