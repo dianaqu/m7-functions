@@ -5,7 +5,7 @@
 
 CompareLength <- function(a, b) {
   result <- length(a) - length(b)
-  return (paste('The difference in lengths is', result))
+  return (paste('The difference in lengths is', abs(result)))
 }
 
 # Pass two vectors of different length to your `CompareLength` function
@@ -18,7 +18,11 @@ b <- c(3,4,5,6)
 
 DescribeDifference <- function(a,b) {
   result <- length(a) - length(b)
-  
+  if (result > 0) {
+    return (paste('Your first vector is longer by', abs(result), 'elements'))
+  } else if (result < 0) {
+    return (paste('Your second vector is longer by', abs(result), 'elements'))
+  }
 }
 
 # Pass two vectors to your `DescribeDifference` function
